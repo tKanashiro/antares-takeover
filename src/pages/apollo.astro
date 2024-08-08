@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import pkg from "@apollo/client";
+import client from "../lib/apollo-client";
+const { ApolloProvider } = pkg;
+---
+
+<ApolloProvider client={client}>
+    <Layout title="Apollo Cache">
+        <h1>Apollo</h1>
+    </Layout>
+</ApolloProvider>
