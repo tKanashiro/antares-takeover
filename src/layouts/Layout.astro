@@ -1,9 +1,10 @@
 ---
-import Ant from '@icons/Ant.astro';
 interface Props {
 	title: string;
 	appearanceMode?: 'dark' | 'light';
 }
+
+import Ant from '@icons/Ant.astro';
 
 const { title, appearanceMode = 'dark' } = Astro.props;
 const isDarkMode = appearanceMode === 'dark';
