@@ -5,6 +5,7 @@ interface Props {
 }
 
 import Ant from '@icons/Ant.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 const { title, appearanceMode = 'dark' } = Astro.props;
 const isDarkMode = appearanceMode === 'dark';
@@ -19,6 +20,7 @@ const isDarkMode = appearanceMode === 'dark';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body class={appearanceMode}>
 		<a class="linkHome" href="/">
