@@ -1,12 +1,36 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import {client} from "../lib/apollo-client";
 import pkg from "@apollo/client";
-import client from "../lib/apollo-client";
-const { ApolloProvider } = pkg;
+const { ApolloProvider, useQuery, gql } = pkg;
+
+const GET_COUNTRIES = gql`
+    query getCountries {
+        countries {
+            two_letter_abbreviation
+            full_name_english
+            available_regions {
+                code
+                name
+                id
+            }
+        }
+    }
+`;
+
+// const CountriesComponent = () => {
+//     const { data, loading, error } = useQuery(GET_COUNTRIES);
+//     if (data) console.log({data})
+
+// }
+ const { data } = useQuery(GET_COUNTRIES);
+ if (data) console.log({data})
+
 ---
 
-<ApolloProvider client={client}>
-    <Layout title="Apollo Cache">
+<ApolloProvider client={client} client:only>
+    <Layout title="Apollo Cache" appearanceMode="light">
         <h1>Apollo</h1>
+         <!-- <CountriesComponent /> -->
     </Layout>
-</ApolloProvider>
+</ApolloProvider>   

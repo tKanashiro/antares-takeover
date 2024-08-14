@@ -1,7 +1,9 @@
+// import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
 import pkg from "@apollo/client";
 const { ApolloClient, InMemoryCache, gql } = pkg;
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
     uri: "https://take-flight-ew3k5nq-ekxw7lyelhava.ap-4.magentosite.cloud/graphql",
     cache: new InMemoryCache(),
 });
@@ -24,4 +26,4 @@ client
     })
     .then((result) => console.log(result));
 
-export default client;
+// export default client;
