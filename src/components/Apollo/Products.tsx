@@ -1,4 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery, useSuspenseQuery } from "@apollo/client";
+import { GET_CATEGORIES } from "./query";
+import { Suspense, useMemo } from "react";
+import "./Product.css";
 
 const variables = {
     currentPage: 1,
@@ -10,92 +13,63 @@ const variables = {
     sort: {
         relevance: "DESC",
     },
-    pageSize: 24,
+    pageSize: 12,
 };
-
-const GET_CATEGORIES = gql`
-    query getCategories(
-        $productFilters: ProductAttributeFilterInput
-        $pageSize: Int
-        $currentPage: Int
-        $sort: ProductAttributeSortInput
-    ) {
-        products(
-            pageSize: $pageSize
-            currentPage: $currentPage
-            filter: $productFilters
-            sort: $sort
-        ) {
-            items {
-                name
-                id
-                sku
-                media_gallery_entries {
-                    id
-                    label
-                    position
-                    disabled
-                    file
-                }
-                ... on ConfigurableProduct {
-                    configurable_options {
-                        attribute_code
-                        attribute_id
-                        id
-                        label
-                        values {
-                            default_label
-                            label
-                            store_label
-                            use_default_value
-                            value_index
-                            swatch_data {
-                                ... on ImageSwatchData {
-                                    thumbnail
-                                }
-                                value
-                            }
-                        }
-                    }
-                    variants {
-                        attributes {
-                            code
-                            value_index
-                        }
-                        product {
-                            id
-                            categories {
-                                id
-                                breadcrumbs {
-                                    category_id
-                                    category_name
-                                }
-                                name
-                                level
-                            }
-                            media_gallery_entries {
-                                id
-                                disabled
-                                file
-                                label
-                                position
-                            }
-                            sku
-                            stock_status
-                        }
-                    }
-                }
-            }
-        }
-    }
-`;
 
 export default function Products() {
     const { data } = useQuery(GET_CATEGORIES, {
         variables: variables,
     });
 
-    if (data) console.log({ data });
+    // const { data } = useSuspenseQuery(GET_CATEGORIES, {
+    //     variables: variables,
+    // });
 
-    return <p>{JSON.stringify(data)}</p>;
+    const products = useMemo(() => {
+        if (!data) return;
+
+        return data.products.items;
+    }, [data]);
+
+    if (data) console.log({ data, products });
+
+    if (!products) return <div>Loading...</div>;
+
+    return (
+        // <Suspense fallback={<div>Loading...</div>}>
+        //     {products.length > 0 &&
+        //         products.map((item) => {
+        //             return <p>Test: {item.name}</p>;
+        //         })}
+        // </Suspense>
+
+        <div className="body">
+            {products.length > 0 &&
+                products.map((item) => {
+                    const { small_image, name, __typename } = item;
+
+                    const isConfigurable = __typename === "ConfigurableProduct";
+
+                    return (
+                        <div className="card">
+                            <div>
+                                <div className="imageWrapper">
+                                    <img
+                                        className="image"
+                                        src={small_image.url}
+                                        alt={name}
+                                    />
+                                </div>
+                                <p className="text">{name}</p>
+                            </div>
+                            {isConfigurable && (
+                                <p className="text moreOptions">
+                                    See more options
+                                </p>
+                            )}
+                        </div>
+                    );
+                })}
+        </div>
+    );
 }
