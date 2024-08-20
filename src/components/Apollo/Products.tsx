@@ -17,6 +17,10 @@ const variables = {
 };
 
 export default function Products() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get("lang");
+    console.log({ myParam });
+    localStorage.setItem("lang", `${myParam}`);
     const { data } = useQuery(GET_CATEGORIES, {
         variables: variables,
     });
