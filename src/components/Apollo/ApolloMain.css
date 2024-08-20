@@ -1,0 +1,10 @@
+.demoLink {
+    border: 1px solid blue;
+    padding: 10px 12px;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.demoLink:visited {
+    color: #000000;
+}
