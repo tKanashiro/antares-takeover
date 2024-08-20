@@ -1,0 +1,16 @@
+---
+import Layout from "@layouts/Layout.astro";
+import CSS from "@components/CSS/CSS";
+---
+
+<Layout title="Subgrid">
+  <main>
+    <h1>PLP with grid</h1>
+    <CSS client:only />
+  </main>
+</Layout>
+<style>
+  h1 {
+    color: white;
+  }
+</style>
