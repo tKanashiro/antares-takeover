@@ -11,21 +11,14 @@ export const client = new ApolloClient({
         //     switch (responseObject.__typename) {
         //         case "ConfigurableProduct":
         //         case "SimpleProduct":
-        //             return `ProductInterface:${responseObject.sku}`;
+        //             return `ProductInterface:${responseObject.id}`;
         //         default:
         //             return defaultDataIdFromObject(responseObject);
         //     }
         // },
         // typePolicies: {
-        //     ProductInterface: {
-        //         fields: {
-        //             locale: {
-        //                 read: () => {
-        //                     return localStorage.getItem("lang");
-        //                 },
-        //             },
-        //         },
-        //         keyFields: ["locale", "sku"],
+        //     ConfigurableProduct: {
+        //         keyFields: ["sku"],
         //     },
         // },
     }),
