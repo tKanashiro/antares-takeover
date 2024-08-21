@@ -27,20 +27,24 @@ export default function Products() {
         variables: variables,
     });
 
+    const products = (data?.products && data.products.items) || [];
+
     return (
         <div className="body">
-            {data?.products?.items && data?.products?.items?.length > 0 ? (
-                data.products.items.map((item) => {
-                    const isConfigurable =
-                        item?.__typename === "ConfigurableProduct";
+            {products && products?.length > 0 ? (
+                products.map((item) => {
+                    if (!item) return;
 
-                    const productName = item?.name || "";
+                    const isConfigurable =
+                        item.__typename === "ConfigurableProduct";
+
+                    const productName = item.name || "";
 
                     return (
                         <div className="card">
                             <div>
                                 <div className="imageWrapper">
-                                    {item?.small_image?.url && (
+                                    {item.small_image?.url && (
                                         <img
                                             className="image"
                                             src={item.small_image.url}
