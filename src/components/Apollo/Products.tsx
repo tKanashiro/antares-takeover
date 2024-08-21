@@ -1,6 +1,9 @@
-import { useQuery, useSuspenseQuery } from "@apollo/client";
+import { useSuspenseQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "./query";
-import { Suspense, useMemo } from "react";
+import type {
+    GetCategoriesQuery,
+    GetCategoriesQueryVariables,
+} from "src/generated/graphql";
 import "./Product.css";
 
 const variables = {
@@ -17,50 +20,33 @@ const variables = {
 };
 
 export default function Products() {
-    const { data } = useQuery(GET_CATEGORIES, {
+    // GetCategoriesQueryVariables,
+    const { data } = useSuspenseQuery<GetCategoriesQuery>(GET_CATEGORIES, {
         variables: variables,
     });
 
-    // const { data } = useSuspenseQuery(GET_CATEGORIES, {
-    //     variables: variables,
-    // });
-
-    const products = useMemo(() => {
-        if (!data) return;
-
-        return data.products.items;
-    }, [data]);
-
-    if (data) console.log({ data, products });
-
-    if (!products) return <div className="loading">Loading...</div>;
-
     return (
-        // <Suspense fallback={<div>Loading...</div>}>
-        //     {products.length > 0 &&
-        //         products.map((item) => {
-        //             return <p>Test: {item.name}</p>;
-        //         })}
-        // </Suspense>
-
         <div className="body">
-            {products.length > 0 &&
-                products.map((item) => {
-                    const { small_image, name, __typename } = item;
+            {data?.products?.items && data?.products?.items?.length > 0 ? (
+                data.products.items.map((item) => {
+                    const isConfigurable =
+                        item?.__typename === "ConfigurableProduct";
 
-                    const isConfigurable = __typename === "ConfigurableProduct";
+                    const productName = item?.name || "";
 
                     return (
                         <div className="card">
                             <div>
                                 <div className="imageWrapper">
-                                    <img
-                                        className="image"
-                                        src={small_image.url}
-                                        alt={name}
-                                    />
+                                    {item?.small_image?.url && (
+                                        <img
+                                            className="image"
+                                            src={item.small_image.url}
+                                            alt={productName}
+                                        />
+                                    )}
                                 </div>
-                                <p className="text">{name}</p>
+                                <p className="text">{productName}</p>
                             </div>
                             {isConfigurable && (
                                 <p className="text moreOptions">
@@ -69,7 +55,10 @@ export default function Products() {
                             )}
                         </div>
                     );
-                })}
+                })
+            ) : (
+                <p>No products found</p>
+            )}
         </div>
     );
 }
