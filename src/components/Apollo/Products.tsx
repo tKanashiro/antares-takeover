@@ -1,27 +1,29 @@
 import { useSuspenseQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "./query";
-import type {
-    GetCategoriesQuery,
-    GetCategoriesQueryVariables,
+import {
+    SortEnum,
+    type GetCategoriesQuery,
+    type GetCategoriesQueryVariables,
 } from "src/generated/graphql";
 import "./Product.css";
 
 const variables = {
-    currentPage: 1,
     productFilters: {
         category_uid: {
             eq: "MjE=",
         },
     },
     sort: {
-        relevance: "DESC",
+        relevance: SortEnum.Asc,
     },
     pageSize: 12,
 };
 
 export default function Products() {
-    // GetCategoriesQueryVariables,
-    const { data } = useSuspenseQuery<GetCategoriesQuery>(GET_CATEGORIES, {
+    const { data } = useSuspenseQuery<
+        GetCategoriesQuery,
+        GetCategoriesQueryVariables
+    >(GET_CATEGORIES, {
         variables: variables,
     });
 
