@@ -3,6 +3,8 @@ dist/
 
 # generated types
 .astro/
+graphql.d.ts
+graphql.schema.json
 
 # dependencies
 node_modules/
