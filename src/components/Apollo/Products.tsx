@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from "@apollo/client";
+import { useQuery, useSuspenseQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "./query";
 import {
     SortEnum,
@@ -27,7 +27,28 @@ export default function Products() {
         variables: variables,
     });
 
+    // const { data, loading } = useQuery<
+    //     GetCategoriesQuery,
+    //     GetCategoriesQueryVariables
+    // >(GET_CATEGORIES, {
+    //     variables: variables,
+    // });
+
     const products = (data?.products && data.products.items) || [];
+
+    // if (loading)
+    //     return (
+    //         <div
+    //             style={{
+    //                 color: "#ffffff",
+    //                 textAlign: "center",
+    //                 fontSize: "25px",
+    //                 margin: "50px 0",
+    //             }}
+    //         >
+    //             Loading...
+    //         </div>
+    //     );
 
     return (
         <div className="body">
