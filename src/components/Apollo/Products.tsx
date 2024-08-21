@@ -17,10 +17,6 @@ const variables = {
 };
 
 export default function Products() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get("lang");
-    console.log({ myParam });
-    localStorage.setItem("lang", `${myParam}`);
     const { data } = useQuery(GET_CATEGORIES, {
         variables: variables,
     });
@@ -37,7 +33,7 @@ export default function Products() {
 
     if (data) console.log({ data, products });
 
-    if (!products) return <div>Loading...</div>;
+    if (!products) return <div className="loading">Loading...</div>;
 
     return (
         // <Suspense fallback={<div>Loading...</div>}>
