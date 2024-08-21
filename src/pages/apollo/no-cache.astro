@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageTitle from '@components/Title.astro';
+import { Code } from 'astro:components';
+import { Image } from 'astro:assets';
+import fetchPolicyImg from '../../assets/no-cache.png'
+---
+
+<Layout title="Apollo Cache" >
+    <PageTitle title="Fetch Policy " appearanceMode="light"/>
+
+    <div class="container">
+        <div class="codeWrapper">
+            <Code code={`const { data, error, loading } = useQuery(GET_CATEGORIES, {
+    fetchPolicy: 'no-cache'
+});`} lang="html" />
+        </div>
+
+        <div class="fetchPolicyOption">
+            <Image src={fetchPolicyImg} alt="no-cache" />
+        </div>
+    </div>
+</Layout>
+
+<style>
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .codeWrapper {
+        max-width: fit-content;
+        padding: 20px;
+    }
+
+    .codeWrapper pre {
+        padding: 20px;
+    }
+
+    .fetchPolicyOption {
+        margin-top: 50px;
+    }
+
+    .fetchPolicyOption h2 {
+        color: #ffffff;
+        text-align: center;
+    }
+</style>
