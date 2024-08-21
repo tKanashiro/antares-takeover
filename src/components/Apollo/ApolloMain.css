@@ -1,10 +1,26 @@
+.body {
+    margin: 300px 0 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.splitResponseImg {
+    margin: 600px 0 100px;
+}
+
 .demoLink {
-    border: 1px solid blue;
+    border: 1px solid #e435ac;
+    background-color: #e435ac;
+    color: #ffffff;
     padding: 10px 12px;
+    font-size: 45px;
     text-decoration: none;
     border-radius: 15px;
 }
 
 .demoLink:visited {
-    color: #000000;
+    color: #ffffff;
 }
