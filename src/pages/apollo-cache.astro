@@ -1,11 +1,11 @@
 ---
 import ApolloCacheDemo from "@components/Apollo/ApolloCache";
 import Layout from "../layouts/Layout.astro";
-import PageTitle from '@components/Title.astro';
+import Header from "@components/Header.astro";
 ---
 
 <Layout title="Apollo Cache">
-    <PageTitle title="Apollo Cache - Demo" appearanceMode="light"/>
+    <Header title="Apollo Cache - Demo" />
 
     <ApolloCacheDemo client:only="react"/>
 </Layout>

@@ -1,13 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PageTitle from '@components/Title.astro';
+import Header from "@components/Header.astro";
 import { Code } from 'astro:components';
 import { Image } from 'astro:assets';
 import fetchPolicyImg from '../../assets/cache-and-network.png'
 ---
 
 <Layout title="Apollo Cache" >
-    <PageTitle title="Fetch Policy " appearanceMode="light"/>
+    <Header title="cache-and-network" next="/apollo/network-only" />
 
     <div class="container">
         <div class="codeWrapper">

@@ -1,6 +1,6 @@
 ---
 interface Props {
-    next: string;
+    next?: string;
     title: string;
 }
 
@@ -8,7 +8,7 @@ const { next, title } = Astro.props;
 ---
 <header class="header">
   <h1>{title}</h1>
-  <a href={next}>&rarr;</a>
+  {next && <a href={next}>&rarr;</a>}
 </header>
 
 <style>

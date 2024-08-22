@@ -1,18 +1,18 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PageTitle from '@components/Title.astro';
+import Header from "@components/Header.astro";
 import { Code } from 'astro:components';
 import { Image } from 'astro:assets';
 import fetchPolicyImg from '../../assets/cache-only.png'
 ---
 
 <Layout title="Apollo Cache" >
-    <PageTitle title="Fetch Policy " appearanceMode="light"/>
+    <Header title="cache-only" next="/apollo/request" />
 
     <div class="container">
         <div class="codeWrapper">
             <Code code={`const { data, error, loading } = useQuery(GET_CATEGORIES, {
-    fetchPolicy: 'network-only'
+    fetchPolicy: 'cache-only'
 });`} lang="html" />
         </div>
 
