@@ -1,0 +1,22 @@
+.body {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.demoLink {
+    border: 1px solid #e435ac;
+    background-color: #e435ac;
+    color: #ffffff;
+    padding: 10px 12px;
+    font-size: 45px;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.demoLink:visited {
+    color: #ffffff;
+}
