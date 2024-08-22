@@ -1,5 +1,5 @@
 import PDP from "@components/PDP/PDP";
-import PLP from "@components/PLP/PLP";
+import PLP0 from "@components/PLP/PLP0";
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const router = createBrowserRouter(
   [
     {
       path: "",
-      element: <PLP />,
+      element: <PLP0 />,
     },
     { path: "/product/:id", element: <PDP /> },
   ],
@@ -16,7 +16,7 @@ const router = createBrowserRouter(
   }
 );
 
-const CSS = () => {
+const CSS0 = () => {
   return (
     <React.StrictMode>
       <RouterProvider router={router} />
@@ -24,4 +24,4 @@ const CSS = () => {
   );
 };
 
-export default CSS;
+export default CSS0;

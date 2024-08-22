@@ -1,0 +1,26 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+---
+
+<Layout title="CSS">
+  <main>
+    <Header title="subgrid" next="/css/six" />
+    <div class="jumbo">
+      <p>In CSS grids, row and column tracks created on a parent grid can only be used to position direct children of the grid container.</p>
+      <p>With subgrid, track sizing, templates and names can be shared with nested grids.</p></div>
+  </main>
+</Layout>
+<style is:global>
+  .jumbo {
+    color: white;
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 1.5;
+    max-width: 75%;
+  }
+
+  .jumbo p + p {
+    font-size: 3rem;
+  }
+</style>

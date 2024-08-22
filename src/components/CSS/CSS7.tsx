@@ -1,5 +1,5 @@
 import PDP from "@components/PDP/PDP";
-import PLP from "@components/PLP/PLP";
+import PLP7 from "@components/PLP/PLP7";
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -7,16 +7,16 @@ const router = createBrowserRouter(
   [
     {
       path: "",
-      element: <PLP />,
+      element: <PLP7 />,
     },
     { path: "/product/:id", element: <PDP /> },
   ],
   {
-    basename: "/css",
+    basename: "/css/seven",
   }
 );
 
-const CSS = () => {
+const CSS7 = () => {
   return (
     <React.StrictMode>
       <RouterProvider router={router} />
@@ -24,4 +24,4 @@ const CSS = () => {
   );
 };
 
-export default CSS;
+export default CSS7;

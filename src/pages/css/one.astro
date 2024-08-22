@@ -1,0 +1,12 @@
+---
+import Layout from "@layouts/Layout.astro";
+import CSS1 from '@components/CSS/CSS1'
+import Header from "../../components/Header.astro";
+---
+
+<Layout title="CSS">
+  <main>
+    <Header title="grids" next="/css/two" />
+    <CSS1 client:load />
+  </main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import CSS4 from "@components/CSS/CSS4";
+---
+
+<Layout title="CSS">
+  <main>
+    <Header title="grids" next="/css/five" />
+    <CSS4 client:only />
+  </main>
+</Layout>

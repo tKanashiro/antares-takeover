@@ -1,30 +1,30 @@
-import React, { useMemo } from "react";
+import React from "react";
 import classes from "./PDP.module.css";
-import { getProduct, products } from "src/utils/getProducts";
+import { getProduct } from "src/utils/getProducts";
 import { useParams } from "react-router-dom";
 
 export default function PDP() {
   let { id } = useParams();
-  const product = useMemo(() => {
-    if (!id) return null;
-
-    return getProduct(Number(id));
-  }, [id]);
+  const product = getProduct(Number(id));
 
   if (!product) return null;
 
-  const { name, imageLarge } = product;
+  const { name, imageLarge, price, salePrice } = product;
+
   return (
     <main className={classes.main}>
-      <header></header>
       <img
         src={imageLarge}
         alt={name}
-        style={{ viewTransitionName: "product-image" }}
+        // style={{ viewTransitionName: "product-image" }}
       />
       <section>
         <h1>{name}</h1>
-        <p className={classes.price}>$279.99</p>
+        <div className={classes.rating}>⭐⭐⭐⭐⭐</div>
+        <div className={classes.price}>
+          ${price}
+          <div className={classes.salePrice}>{price !== salePrice ? `$${salePrice}` : ''}</div>
+        </div>
         <ul className={classes.size}>
           <li>1</li>
           <li>2</li>

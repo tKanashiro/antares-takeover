@@ -12,11 +12,11 @@ const router = createBrowserRouter(
     { path: "/product/:id", element: <PDP /> },
   ],
   {
-    basename: "/css",
+    basename: "/css/eight",
   }
 );
 
-const CSS = () => {
+const CSS8 = () => {
   return (
     <React.StrictMode>
       <RouterProvider router={router} />
@@ -24,4 +24,4 @@ const CSS = () => {
   );
 };
 
-export default CSS;
+export default CSS8;
