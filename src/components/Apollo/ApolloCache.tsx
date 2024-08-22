@@ -13,7 +13,7 @@ import { Suspense } from "react";
 const ApolloCache = () => {
     return (
         <ApolloProvider client={client}>
-            <Suspense
+            {/* <Suspense
                 fallback={
                     <div
                         style={{
@@ -26,9 +26,9 @@ const ApolloCache = () => {
                         Loading...
                     </div>
                 }
-            >
-                <Products />
-            </Suspense>
+            > */}
+            <Products />
+            {/* </Suspense> */}
         </ApolloProvider>
     );
 };
