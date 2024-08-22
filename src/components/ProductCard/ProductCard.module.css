@@ -1,0 +1,53 @@
+.productCard {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  gap: 1rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.rating {
+  color: transparent;
+  text-shadow: 0 0 0 black;
+}
+
+.price {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.salePrice {
+  font-size: 1rem;
+  text-decoration: line-through;
+}
+
+img {
+  display: block;
+  aspect-ratio: 31 / 35;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.shopNow {
+  display: block;
+  background: black;
+  color: white;
+  padding: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: .25rem;
+}
+
+.shopNow:hover {
+  opacity: 0.8;
+}

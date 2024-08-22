@@ -1,0 +1,61 @@
+.main {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 2rem;
+}
+
+aside {
+  background-image: linear-gradient(to bottom, #eee 75%, #fff 75%);
+  background-size: 100% 3rem;
+  background-repeat: space;
+}
+
+img {
+  width: 100%;
+}
+
+.size {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 4rem);
+  grid-auto-rows: 2rem;
+  gap: 1rem;
+}
+
+.size li {
+  color: #eee;
+  background: #eee;
+  padding: 0;
+}
+
+.description p {
+  color: #eee;
+  background: #eee;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.rating {
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  margin-bottom: 1rem;
+}
+
+.price {
+  margin: 0 0 2rem;
+  font-size: 2rem;
+}
+
+.salePrice {
+  font-size: 1rem;
+  text-decoration: line-through;
+}
