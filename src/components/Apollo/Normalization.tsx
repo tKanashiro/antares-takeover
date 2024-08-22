@@ -5,9 +5,6 @@ const Normalization = () => {
     return (
         <div className="body">
             <img src={splitImg.src} alt="split" />
-            <a className="demoLink" href="/apollo-cache">
-                Demo
-            </a>
         </div>
     );
 };
