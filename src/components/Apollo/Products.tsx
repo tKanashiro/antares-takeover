@@ -20,35 +20,35 @@ const variables = {
 };
 
 export default function Products() {
-    const { data } = useSuspenseQuery<
-        GetCategoriesQuery,
-        GetCategoriesQueryVariables
-    >(GET_CATEGORIES, {
-        variables: variables,
-    });
-
-    // const { data, loading } = useQuery<
+    // const { data } = useSuspenseQuery<
     //     GetCategoriesQuery,
     //     GetCategoriesQueryVariables
     // >(GET_CATEGORIES, {
     //     variables: variables,
     // });
 
+    const { data, loading } = useQuery<
+        GetCategoriesQuery,
+        GetCategoriesQueryVariables
+    >(GET_CATEGORIES, {
+        variables: variables,
+    });
+
     const products = (data?.products && data.products.items) || [];
 
-    // if (loading)
-    //     return (
-    //         <div
-    //             style={{
-    //                 color: "#ffffff",
-    //                 textAlign: "center",
-    //                 fontSize: "25px",
-    //                 margin: "50px 0",
-    //             }}
-    //         >
-    //             Loading...
-    //         </div>
-    //     );
+    if (loading)
+        return (
+            <div
+                style={{
+                    color: "yellow",
+                    textAlign: "center",
+                    fontSize: "25px",
+                    margin: "50px 0",
+                }}
+            >
+                Loading...
+            </div>
+        );
 
     return (
         <div className="body">
